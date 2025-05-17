@@ -1,0 +1,137 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f2f5;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 600px;
+  margin: 80px auto;
+  padding: 30px;
+  background-color: white;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: #d9534f;
+  margin-bottom: 20px;
+}
+
+a.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #0275d8;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+a.btn:hover {
+  background-color: #025aa5;
+}
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+.reservation-container {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+h1 {
+  color: #007bff;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.reservation-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.reservation-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  margin: 10px 0;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.reservation-item:hover {
+  background-color: #e6f7ff;
+}
+
+.reservation-details {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 8px;
+  text-align: left;
+}
+
+.reservation-name {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.reservation-email,
+.reservation-date,
+.reservation-time,
+.reservation-seats {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.reservation-name,
+.reservation-seats {
+  font-weight: bold;
+}
+
+.reservation-email {
+  color: #007bff;
+}
+
+.reservation-date,
+.reservation-time {
+  color: #666;
+}
+
+.reservation-seats {
+  color: #28a745;
+}
+
+@media only screen and (max-width: 600px) {
+  .reservation-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .reservation-details {
+    text-align: left;
+  }
+
+  .reservation-name,
+  .reservation-email,
+  .reservation-date,
+  .reservation-time,
+  .reservation-seats {
+    font-size: 0.9rem;
+  }
+}
