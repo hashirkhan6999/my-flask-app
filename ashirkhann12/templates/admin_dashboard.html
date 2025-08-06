@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Dashboard - Reservations</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_dashboard.css') }}" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="refresh" content="60">
+</head>
+
+<body>
+  <form method="GET" action="{{ url_for('bookings') }}" class="search-form">
+    <label for="search_id">Search by Reservation ID:</label>
+    <input type="number" name="search_id" id="search_id" value="{{ search_id or '' }}"
+      placeholder="Enter reservation ID" />
+    <button type="submit">Search</button>
+    {% if search_id %}
+    <a href="{{ url_for('bookings') }}">Clear search</a>
+    {% endif %}
+  </form>
+
+
+  <a href="{{ url_for('admin_logout') }}" class="btn-logout">Logout</a>
+
+  <div class="container">
+    <h1>Today's Reservations</h1>
+    {% if todays_bookings|length == 0 %}
+    <p class="no-data">No bookings for today.</p>
+    {% else %}
+    <h2>Total bookings today: {{ todays_bookings|length }}</h2>
+
+    <div class="line-list">
+      {% for booking in todays_bookings %}
+      <div class="line-entry">
+        ID: <b>{{ booking.id }}</b> |
+        Name: <b>{{ booking.name }}</b> |
+        Email: <b>{{ booking.email }}</b> |
+        Phone: <b>{{ booking.phone }}</b> |
+        Date: <b>{{ booking.date.strftime('%Y-%m-%d') }}</b> |
+        Time: <b>{{ booking.time.strftime("%I:%M %p") }}</b> |
+        Seats: <b>{{ booking.people }}</b> |
+        Table #: <b>{{ booking.table_number }}</b> |
+        Remaining Time:
+        <span class="countdown countdown-active"
+          data-created="{{ booking.created_at.strftime('%Y-%m-%dT%H:%M:%S') }}Z"></span> |
+        Notes: <b>{{ booking.notes or '—' }}</b>
+        <form method="POST" action="{{ url_for('delete_reservation', id=booking.id) }}" style="display:inline;">
+          <button type="submit" class="btn btn-danger"
+            onclick="return confirm('Delete this reservation?');">Delete</button>
+        </form>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+
+  <div class="container">
+    <h1>Future Reservations</h1>
+    {% if future_bookings|length == 0 %}
+    <p class="no-data">No future bookings.</p>
+    {% else %}
+    <div class="line-list">
+      {% for booking in future_bookings %}
+      <div class="line-entry">
+        ID: <b>{{ booking.id }}</b> |
+        Name: <b>{{ booking.name }}</b> |
+        Email: <b>{{ booking.email }}</b> |
+        Phone: <b>{{ booking.phone }}</b> |
+        Date: <b>{{ booking.date.strftime('%Y-%m-%d') }}</b> |
+        Time: <b>{{ booking.time.strftime("%I:%M %p") }}</b> |
+        Seats: <b>{{ booking.people }}</b> |
+        Table #: <b>{{ booking.table_number }}</b> |
+        Notes: <b>{{ booking.notes or '—' }}</b>
+        <form method="POST" action="{{ url_for('delete_reservation', id=booking.id) }}" style="display:inline;">
+          <button type="submit" class="btn btn-delete small-btn" onclick="return confirm('Delete this reservation?');">
+            Delete
+          </button>
+        </form>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+
+  <h3 class="mt-4 mb-2">Table Layout</h3>
+  <div class="table-layout">
+    {% for row in table_rows %}
+    <div class="table-row">
+      {% for table in row %}
+      <div class="table-block {{ table.status }}">
+        <div>Table {{ table.number }}</div>
+        <div>Seats: {{ table.seats }}</div>
+        <div class="seat-indicator">
+          {% for i in range(table.seats) %}
+          <span class="seat {% if table.status == 'reserved' %}reserved{% else %}available{% endif %}"></span>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+
+  <script src="{{ url_for('static', filename='js/admin_dashboard.js') }}"></script>
+
+</body>
+
+</html>

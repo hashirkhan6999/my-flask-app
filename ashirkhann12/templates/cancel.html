@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cancel Reservation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cancel.css') }}" />
+</head>
+
+<body>
+    <div class="cancel-container"
+        style="max-width: 400px; margin: 50px auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px;">
+        <h2>Cancel Your Reservation</h2>
+        <form method="POST">
+            <label for="reservation_id">Reservation ID:</label><br />
+            <input type="text" id="reservation_id" name="reservation_id" required
+                style="width: 100%; padding: 8px; margin: 10px 0;" /><br />
+
+            <label for="email">Email Address:</label><br />
+            <input type="email" id="email" name="email" required
+                style="width: 100%; padding: 8px; margin: 10px 0;" /><br />
+
+            <button type="submit" class="btn-reserve-home" style="background-color: #cc0000;">Cancel
+                Reservation</button>
+        </form>
+
+        <p><a href="{{ url_for('home') }}">Back to Home</a></p>
+    </div>
+</body>
+
+</html>

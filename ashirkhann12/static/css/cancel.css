@@ -1,0 +1,122 @@
+body {
+  background: linear-gradient(135deg, #f44336, #b71c1c);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: bgPulse 6s ease-in-out infinite;
+  margin: 0;
+  padding: 0;
+}
+
+@keyframes bgPulse {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.cancel-container {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+  border-radius: 15px;
+  padding: 30px 40px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  backdrop-filter: blur(8px);
+  animation: fadeInUp 1s ease forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h2 {
+  margin-bottom: 25px;
+  font-weight: 700;
+  font-size: 1.8rem;
+  letter-spacing: 1.5px;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-top: 15px;
+  margin-bottom: 6px;
+  text-align: left;
+  letter-spacing: 0.05em;
+  color: #ffdede;
+  text-shadow: 0 0 5px #ff4444;
+}
+
+input[type="text"],
+input[type="email"] {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 2px solid #ff6b6b;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 5px rgba(255, 0, 0, 0.2);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+  border-color: #ff0000;
+  box-shadow: 0 0 10px #ff0000;
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.btn-reserve-home {
+  margin-top: 25px;
+  width: 100%;
+  padding: 12px 0;
+  background-color: #e53935;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  letter-spacing: 0.1em;
+  box-shadow: 0 0 8px #d32f2f;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  text-transform: uppercase;
+}
+
+.btn-reserve-home:hover,
+.btn-reserve-home:focus {
+  background-color: #b71c1c;
+  box-shadow: 0 0 20px #ff5252;
+  transform: scale(1.05);
+}
+
+a {
+  color: #ffaaaa;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+  display: inline-block;
+  margin-top: 20px;
+  letter-spacing: 0.05em;
+}
+
+a:hover {
+  color: #fff;
+  text-shadow: 0 0 5px #ff0000;
+}
